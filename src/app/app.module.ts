@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { LoginFormComponent } from './features/login/components/login-form/login-form.component';
 import { LoginContainer } from './features/login/containers/login/login.container';
+import { BaseButtonComponent } from './shared/components/base-button/base-button.component';
 import { navbarComponent } from './shared/components/navbar/navbar.component';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { navbarComponent } from './shared/components/navbar/navbar.component';
 
     //COMPONENTS
     navbarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    BaseButtonComponent
   ],
   imports: [
     BrowserModule,

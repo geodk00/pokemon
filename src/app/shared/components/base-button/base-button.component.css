@@ -1,0 +1,6 @@
+.button {
+    background-color: var(--col-red);
+    color: var(--col-yellow);
+    padding: .7em;
+    border: 1px solid var(--col-red)
+}
