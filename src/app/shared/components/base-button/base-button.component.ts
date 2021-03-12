@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'app-base-button',
-    templateUrl: './base-button.component.ts',
+    templateUrl: './base-button.component.html',
     styleUrls: ['./base-button.component.css']
 })
 
