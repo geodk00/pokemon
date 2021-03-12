@@ -1,0 +1,30 @@
+<form [formGroup]="loginForm">
+    <label for="trainer-name">
+        Please select a trainer name:
+    </label>
+    <input 
+        id="trainer-name"
+        name="trainer-name"
+        type="text"
+        formControlName="trainerName"
+        placeholder="trainer name"
+        required
+        minlength="3"
+        maxlength="20">
+    <!-- If the name is invalid and there is input or the input has had focus and lost it -->
+    <div *ngIf="trainerName.invalid && (trainerName.dirty || trainerName.touched)">
+        <p *ngIf="trainerName.errors.required">
+            Trainer name is required
+        </p>
+        <p *ngIf="trainerName.errors.minlength">
+            Trainer name is less that 3 characters
+        </p>
+        <p *ngIf="trainerName.errors.maxlength">
+            Trainer name is too long
+        </p>
+    </div>
+
+    <button 
+        (click)="onLoginClick()"
+        [disabled] ="loginForm.invalid || loading">Go!</button>
+</form>
