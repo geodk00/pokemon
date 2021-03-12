@@ -1,8 +1,7 @@
 nav {
     position: sticky;
     top: 0;
-    background-color: black;
-    color: white;
+    background-color: var(--col-yellow);
 }
 
 nav, ul {
@@ -12,7 +11,7 @@ nav, ul {
 
 li a {
     text-decoration: none;
-    color: white;
+    color: var(--col-red);
     display: block;
     padding: 1em;
 }
