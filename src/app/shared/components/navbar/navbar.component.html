@@ -1,10 +1,14 @@
 <nav>
     <ul>
+        <li>Pokemon Logo here</li>
+        <ng-container *ngIf="hasActiveSession">
         <li>
             <a routerLink="/trainer">Trainer</a>
         </li>
-        <li>
-            <a routerLink="/pokemon">Pokemon</a>
-        </li>
+        
+            <li>
+                <a routerLink="/pokemon">Pokemon</a>
+            </li>
+        </ng-container>
     </ul>
 </nav>

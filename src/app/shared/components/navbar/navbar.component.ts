@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { LocalStorageService } from "src/app/features/login/services/local-storage/local-storage.service";
 
 @Component({
     selector: 'navbar-component',
@@ -7,5 +8,13 @@ import { Component } from "@angular/core";
 })
 
 export class navbarComponent {
+
+    constructor(private readonly localStorageService: LocalStorageService) {
+
+    }
+
+    get hasActiveSession(): boolean {
+        return Boolean(this.localStorageService.getTrainer());
+    }
 
 }
