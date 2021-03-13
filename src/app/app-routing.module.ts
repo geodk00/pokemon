@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SessionGuard } from 'src/guards/session/session.guard';
 import { LoginContainer } from './features/login/containers/login/login.container';
 import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.component';
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'pokemon',
-    component: PokemonContainer
+    component: PokemonContainer,
+    canActivate: [ SessionGuard ]
   }/*,
   {
     path: 'pokemon/:name',
