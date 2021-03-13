@@ -6,7 +6,8 @@ import { PokemonResponse } from "src/app/models/pokemon-response.model";
 import { Pokemon } from "src/app/models/pokemon.model";
 import { environment } from "src/environments/environment";
 
-const { pokeAPI } = environment
+const { pokeAPI } = environment;
+const { imageURL } = environment;
 
 @Injectable({
     providedIn: 'root'
@@ -49,7 +50,7 @@ export class PokemonService {
         const id = url.split('/').filter( Boolean ).pop();
         return {
             id: Number(id),
-            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ id }.png`
+            image: `${ imageURL }/${ id }.png`
         }
     }
 }
