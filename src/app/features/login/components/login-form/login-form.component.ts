@@ -29,7 +29,7 @@ export class LoginFormComponent {
         return this.loginForm.get('trainerName')
     }
 
-    onLoginClick() {
+    onLoginClick(event) {
         console.log(this.loginForm.value)
         this.loading = false;
     }

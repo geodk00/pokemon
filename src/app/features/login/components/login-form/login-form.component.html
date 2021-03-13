@@ -25,6 +25,6 @@
     </div>
 
     <app-base-button 
-        (click)="onLoginClick()"
+        (onClick)="onLoginClick($event)"
         [disabled] ="loginForm.invalid || loading">Go!</app-base-button>
 </form>

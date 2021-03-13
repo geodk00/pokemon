@@ -2,5 +2,10 @@
     background-color: var(--col-red);
     color: var(--col-yellow);
     padding: .7em;
-    border: 1px solid var(--col-red)
+    border: 2px solid var(--col-red);
+    border-radius: .25em;
+}
+
+.button[disabled] {
+    background-color: var(--col-blue);
 }
