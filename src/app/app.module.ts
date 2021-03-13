@@ -14,6 +14,7 @@ import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.
 import { PokemonDetailsContainer } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
 import { TrainerContainer } from './features/trainer/containers/trainer/trainer.component';
 import { AppContainerComponent } from './shared/components/container/container.component';
+import { PokemonGridComponent } from './features/pokemon/components/pokemon-grid/pokemon-grid.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AppContainerComponent } from './shared/components/container/container.c
     navbarComponent,
     LoginFormComponent,
     BaseButtonComponent,
-    AppContainerComponent
+    AppContainerComponent,
+    PokemonGridComponent
   ],
   imports: [
     BrowserModule,
