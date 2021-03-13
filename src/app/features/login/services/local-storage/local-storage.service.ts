@@ -5,8 +5,11 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs'
   providedIn: 'root'
 })
 export class LocalStorageService {
-  private trainer: string;
+  private trainer: string = null;
   private trainer$
+
+  public loading: boolean;
+  public error: string = '';
 
   constructor() { 
     try {
@@ -17,13 +20,25 @@ export class LocalStorageService {
     }
   }
 
-  getTrainer() :Observable<string> {
+  getTrainerObservable() :Observable<string> {
     return this.trainer$.asObservable();
   }
 
+  getTrainer() :string {
+    return this.trainer
+  }
+
   setTrainer(trainer: string) :void {
-    this.trainer = trainer
-    localStorage.setItem('trainer', this.trainer)
-    this.trainer$.next(this.trainer)
+    this.loading = true;
+
+    try {
+      this.trainer = trainer
+      localStorage.setItem('trainer', this.trainer)
+      this.trainer$.next(this.trainer)
+    } catch (e) {
+      //TODO: Improve this message
+      this.error = e.message
+    }
+    this.loading = false;
   }
 }

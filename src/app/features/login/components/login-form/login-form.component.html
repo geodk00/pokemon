@@ -27,4 +27,5 @@
     <app-base-button 
         (onClick)="onLoginClick($event)"
         [disabled] ="loginForm.invalid || loading">Go!</app-base-button>
+    <p *ngIf="error">{{ error }}</p>
 </form>

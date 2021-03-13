@@ -20,8 +20,6 @@ export class LoginFormComponent {
     
     @Output() success: EventEmitter<void> = new EventEmitter();
 
-    loading: boolean = false;
-
     loginForm: FormGroup = new FormGroup({
         trainerName: new FormControl('',[
             Validators.required,
@@ -34,16 +32,32 @@ export class LoginFormComponent {
 
     }
 
+    ngOnInit(): void {
+        const existingTrainer = this.localStorageService.getTrainer()
+        if (existingTrainer !== null) {
+            this.success.emit()
+        }
+        
+    }
+
     get trainerName(): AbstractControl {
         return this.loginForm.get('trainerName')
     }
 
+    get loading(): boolean {
+        return this.localStorageService.loading;
+    }
+
+    get error(): string {
+        return this.localStorageService.error;
+    }
+
     onLoginClick(event) {
         const { trainerName } = this.loginForm.value
-        this.loading = false;
         this.localStorageService.setTrainer(trainerName)
-        this.loading = false;
-        this.success.emit();
+        if (!this.error) {
+            this.success.emit();
+        }
     }
 
 }
