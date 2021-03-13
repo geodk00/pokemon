@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router'
+import { AppRoutes } from 'src/app/enums/app-routes.enum'
 
 @Component({
     selector: 'app-login-container',
@@ -8,4 +9,11 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 
 export class LoginContainer {
 
+    constructor(private readonly router: Router) {
+
+    }
+
+    handleLoginSuccess(): void {
+        this.router.navigateByUrl( AppRoutes.POKEMON )
+    }
 }

@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/forms";
+import { LocalStorageService } from "../../services/local-storage/local-storage.service";
+
 
 @Component({
     selector: 'login-form',
@@ -15,7 +17,10 @@ import { AbstractControl, FormControl, FormGroup, Validators } from "@angular/fo
 })
 
 export class LoginFormComponent {
-     loading: boolean = false;
+    
+    @Output() success: EventEmitter<void> = new EventEmitter();
+
+    loading: boolean = false;
 
     loginForm: FormGroup = new FormGroup({
         trainerName: new FormControl('',[
@@ -25,12 +30,20 @@ export class LoginFormComponent {
         ])
     });
 
+    constructor(private readonly localStorageService: LocalStorageService) {
+
+    }
+
     get trainerName(): AbstractControl {
         return this.loginForm.get('trainerName')
     }
 
     onLoginClick(event) {
-        console.log(this.loginForm.value)
+        const { trainerName } = this.loginForm.value
         this.loading = false;
+        this.localStorageService.setTrainer(trainerName)
+        this.loading = false;
+        this.success.emit();
     }
+
 }
