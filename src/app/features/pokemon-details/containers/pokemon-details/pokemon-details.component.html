@@ -1,1 +1,6 @@
-<h1>Pokemon Detail!</h1>
+<app-container>
+    <h1>Pokemon Detail!</h1>
+    <ng-container *ngIf="pokemon">
+        <app-pokemon-profile-header [pokemon]="pokemon"></app-pokemon-profile-header>
+    </ng-container>
+</app-container>

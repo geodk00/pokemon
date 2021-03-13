@@ -15,6 +15,7 @@ import { PokemonDetailsContainer } from './features/pokemon-details/containers/p
 import { TrainerContainer } from './features/trainer/containers/trainer/trainer.component';
 import { AppContainerComponent } from './shared/components/container/container.component';
 import { PokemonGridComponent } from './features/pokemon/components/pokemon-grid/pokemon-grid.component';
+import { PokemonProfileHeaderComponent } from './features/pokemon-details/components/pokemon-profile-header/pokemon-profile-header.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PokemonGridComponent } from './features/pokemon/components/pokemon-grid
     LoginFormComponent,
     BaseButtonComponent,
     AppContainerComponent,
-    PokemonGridComponent
+    PokemonGridComponent,
+    PokemonProfileHeaderComponent
   ],
   imports: [
     BrowserModule,
