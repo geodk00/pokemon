@@ -11,6 +11,7 @@ import { LoginContainer } from './features/login/containers/login/login.containe
 import { BaseButtonComponent } from './shared/components/base-button/base-button.component';
 import { navbarComponent } from './shared/components/navbar/navbar.component';
 import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.component';
+import { PokemonDetailsContainer } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.
     //VIEWS
     LoginContainer,
     PokemonContainer,
+    PokemonDetailsContainer,
     //COMPONENTS
     navbarComponent,
     LoginFormComponent,
