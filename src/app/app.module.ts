@@ -13,6 +13,8 @@ import { navbarComponent } from './shared/components/navbar/navbar.component';
 import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.component';
 import { PokemonDetailsContainer } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
 import { TrainerContainer } from './features/trainer/containers/trainer/trainer.component';
+import { AppContainerComponent } from './shared/components/container/container.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { TrainerContainer } from './features/trainer/containers/trainer/trainer.
     //COMPONENTS
     navbarComponent,
     LoginFormComponent,
-    BaseButtonComponent
+    BaseButtonComponent,
+    AppContainerComponent
   ],
   imports: [
     BrowserModule,
