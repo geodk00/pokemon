@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'pokemon/:name',
-    component: PokemonDetailsContainer
+    component: PokemonDetailsContainer,
+    canActivate: [ SessionGuard ]
   },/*
   {
     path: '**',
