@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'app-container',
-    template: `<div><ng-content></ng-content></div>`,
+    template: `<div class="container"><ng-content></ng-content></div>`,
     styles: [
         `.container {
             max-width: 75em;
