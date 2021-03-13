@@ -1,1 +1,7 @@
 <h1>Pokemon!</h1>
+<ul>
+    <li *ngFor="let poke of pokemon" [routerLink]="poke.name">
+        <img [src]="poke.image" [alt]="poke.name" />
+        {{ poke.name }}
+    </li>
+</ul>
