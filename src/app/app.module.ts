@@ -10,13 +10,14 @@ import { LoginFormComponent } from './features/login/components/login-form/login
 import { LoginContainer } from './features/login/containers/login/login.container';
 import { BaseButtonComponent } from './shared/components/base-button/base-button.component';
 import { navbarComponent } from './shared/components/navbar/navbar.component';
+import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     //VIEWS
     LoginContainer,
-
+    PokemonContainer,
     //COMPONENTS
     navbarComponent,
     LoginFormComponent,
