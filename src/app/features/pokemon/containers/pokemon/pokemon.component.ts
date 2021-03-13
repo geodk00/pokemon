@@ -13,12 +13,11 @@ export class PokemonContainer implements OnInit {
 
     }
 
-    get pokemon(): Pokemon[] {
-        return this.pokemonService.pokemon
+    ngOnInit(): void {
+        this.pokemonService.fetchPokemon();     
     }
 
-    ngOnInit(): void {
-        this.pokemonService.fetchPokemon();
-          
+    get pokemon(): Pokemon[] {
+        return this.pokemonService.pokemon
     }
 }

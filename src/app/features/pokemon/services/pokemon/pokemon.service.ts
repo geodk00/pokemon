@@ -1,11 +1,10 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { map, shareReplay } from 'rxjs/operators'
 import { PokemonResponse } from "src/app/models/pokemon-response.model";
 import { Pokemon } from "src/app/models/pokemon.model";
 import { environment } from "src/environments/environment";
-
+import { PaginationUtility } from "src/app/utils/pagination.util"
 const { pokeAPI } = environment;
 const { imageURL } = environment;
 
@@ -16,14 +15,23 @@ const { imageURL } = environment;
 export class PokemonService {
 
     private readonly pokemonCache$;
-    pokemon: Pokemon[] = []
-    error: string = "";
+    private _pokemon: Pokemon[] = []
+    public error: string = "";
+
+    public paginator: PaginationUtility;
+
 
     constructor(private readonly http: HttpClient) {
         this.pokemonCache$ = 
-            this.http.get<PokemonResponse>(`${pokeAPI}/pokemon`)
+            this.http.get<PokemonResponse>(`${pokeAPI}/pokemon?limit=100`)
             .pipe(shareReplay(1));
-                                
+    }
+
+    get pokemon(): Pokemon[] {
+        if (this.paginator)
+            return this._pokemon.slice(this.paginator.getPagination().offsetStart, this.paginator.getPagination().offsetEnd);
+        else
+            return []
     }
 
     fetchPokemon(): void {
@@ -38,7 +46,8 @@ export class PokemonService {
             )
             .subscribe(
                 (pokemon: Pokemon[]) => {
-                    this.pokemon = pokemon;
+                    this._pokemon = pokemon;
+                    this.paginator = new PaginationUtility(pokemon.length)
                 },
                 (error: HttpErrorResponse) => {
                     this.error = error.message;
