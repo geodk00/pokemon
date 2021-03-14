@@ -22,7 +22,7 @@ export class PaginationUtility {
         offsetStart: 0
     }
 
-    constructor( itemCount :number = 0, limit :number = 20) {
+    constructor( itemCount :number = 0, limit :number = 16) {
         this.pagination = {
             ...this.pagination,
             offsetEnd: this.pagination.offsetStart + limit,
@@ -56,7 +56,7 @@ export class PaginationUtility {
             return;
         }
 
-        const nextOffset = this.pagination.offsetStart - this.pagination.limit;
+        const nextOffset = Math.max(this.pagination.offsetStart - this.pagination.limit, 0);
 
         this.pagination = {
             ...this.pagination,
