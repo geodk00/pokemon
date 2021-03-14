@@ -3,5 +3,6 @@
     <ng-container *ngIf="pokemon">
         <app-pokemon-profile-header [pokemon]="pokemon"></app-pokemon-profile-header>
     </ng-container>
-    <app-base-button (onClick)="handleCollect()">Collect</app-base-button>
+    <app-base-button (onClick)="handleCollect()" *ngIf="!collectedPokemon">Collect</app-base-button>
+    <app-base-button (onClick)="handleRemove()" *ngIf="collectedPokemon">Remove</app-base-button>
 </app-container>

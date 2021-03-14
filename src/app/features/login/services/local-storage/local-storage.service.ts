@@ -17,14 +17,14 @@ export class LocalStorageService {
 
   constructor() { 
     try {
-      let trainer = localStorage.getItem(TRAINER_KEY)
-      let pokemon = localStorage.getItem(POKEMON_KEY)
+      let trainer = localStorage.getItem(TRAINER_KEY);
+      let pokemon = localStorage.getItem(POKEMON_KEY);
       if (trainer && pokemon) {
-        this.trainer$.next(window.atob(trainer))
-        this.pokemon$.next(JSON.parse(window.atob(pokemon)))
+        this.trainer$.next(window.atob(trainer));
+        this.pokemon$.next(JSON.parse(window.atob(pokemon)));
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -33,20 +33,20 @@ export class LocalStorageService {
   }
 
   getTrainer() :string {
-    return this.trainer$.getValue()
+    return this.trainer$.getValue();
   }
 
   setTrainer(trainer: string) :void {
     this.loading = true;
 
     try {
-      localStorage.setItem(TRAINER_KEY, window.btoa(trainer))
-      localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify([])))
-      this.trainer$.next(trainer)
-      this.pokemon$.next([])
+      localStorage.setItem(TRAINER_KEY, window.btoa(trainer));
+      localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify([])));
+      this.trainer$.next(trainer);
+      this.pokemon$.next([]);
     } catch (e) {
       //TODO: Improve this message
-      this.error = e.message
+      this.error = e.message;
     }
     this.loading = false;
   }
@@ -56,14 +56,20 @@ export class LocalStorageService {
   }
 
   getPokemon() :Pokemon[] {
-    return this.pokemon$.getValue()
+    return this.pokemon$.getValue();
   }
 
-  addPokemon(newPokemon: Pokemon) :void{
-    const newPokemons = [...this.pokemon$.value, newPokemon]
+  addPokemon(newPokemon :Pokemon) :void{
+    const newPokemons :Pokemon[] = [...this.pokemon$.value, newPokemon]
 
-    this.pokemon$.next(newPokemons)
-    localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(newPokemons)))
+    this.pokemon$.next(newPokemons);
+    localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(newPokemons)));
+  }
+
+  removePokemon(id :number) :void {
+    const newPokemons :Pokemon[] = this.pokemon$.value.filter(pokemon => pokemon.id !== id);
+    localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(newPokemons)));
+    this.pokemon$.next(newPokemons);
   }
 
 }
