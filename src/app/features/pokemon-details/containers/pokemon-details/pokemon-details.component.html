@@ -1,7 +1,9 @@
 <app-container>
-    <h1>Pokemon Detail!</h1>
+    <h1>Pokemon Detail</h1>
     <ng-container *ngIf="pokemon">
         <app-pokemon-profile-header [pokemon]="pokemon"></app-pokemon-profile-header>
+        <app-pokemon-profile [pokemon]="pokemon"></app-pokemon-profile>
+        <app-pokemon-moves [pokemon]="pokemon"></app-pokemon-moves>
     </ng-container>
     <app-base-button (onClick)="handleCollect()" *ngIf="!collectedPokemon">Collect</app-base-button>
     <app-base-button (onClick)="handleRemove()" *ngIf="collectedPokemon">Remove</app-base-button>

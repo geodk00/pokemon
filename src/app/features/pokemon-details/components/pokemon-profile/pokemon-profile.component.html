@@ -1,0 +1,8 @@
+<h4>Profile</h4>
+<p>Height: {{ pokemon.height }}</p>
+<p>Weight: {{ pokemon.weight }}</p>
+<p>Base Experience: {{ pokemon.base_experience }}</p>
+<h4>Abilities</h4>
+<ul>
+    <li *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</li>
+</ul>
