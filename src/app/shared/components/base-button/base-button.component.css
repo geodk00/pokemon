@@ -1,11 +1,24 @@
 .button {
-    background-color: var(--col-red);
-    color: var(--col-yellow);
+    background-color: var(--col-primary);
+    color: var(--col-dark);
     padding: .7em;
-    border: 2px solid var(--col-red);
-    border-radius: .25em;
+    margin: .3em;
+    border-radius: 1em;
+    border: 0;
+    font-weight: 800;
+    border: 2px solid black;
+}
+
+.button:active {
+    background-color: var(--col-secondary);
+    transform: scale(0.9);
+    outline: none;
+}
+
+.button:focus {
+    outline: none;
 }
 
 .button[disabled] {
-    background-color: var(--col-blue);
+    background-color: var(--col-light);
 }
