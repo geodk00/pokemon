@@ -1,0 +1,17 @@
+ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap
+}
+
+li {
+    margin: 0.5em;
+    width: 20%;
+}
+
+div {
+    background-color: var(--col-primary);
+    padding: 0.4em;
+    border: 2px solid black;
+    border-radius: 1em;
+}
