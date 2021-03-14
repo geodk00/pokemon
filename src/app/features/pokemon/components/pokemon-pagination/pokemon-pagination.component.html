@@ -1,3 +1,5 @@
 <app-pokemon-grid [pokemon]="pokemon"></app-pokemon-grid>
-<button [disabled]= "isFirstPage" (click)="onPrevClick()">Prev</button>
-<button [disabled]= "isLastPage" (click)="onNextClick()">Next</button>
+<app-base-button [disabled]= "isFirstPage" (click)="onFirstClick()">First Page</app-base-button>
+<app-base-button [disabled]= "isFirstPage" (click)="onPrevClick()">Prev</app-base-button>
+<app-base-button [disabled]= "isLastPage" (click)="onNextClick()">Next</app-base-button>
+<app-base-button [disabled]= "isLastPage" (click)="onLastClick()">Last Page</app-base-button>

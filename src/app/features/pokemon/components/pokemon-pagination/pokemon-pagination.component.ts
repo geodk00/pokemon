@@ -29,4 +29,12 @@ export class PokemonPaginationComponent {
     onNextClick(): void {
         this.pokemonService.paginator.next()
     }
+
+    onFirstClick(): void {
+        this.pokemonService.paginator.first()
+    }
+
+    onLastClick(): void {
+        this.pokemonService.paginator.last()
+    }
 }
