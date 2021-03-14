@@ -4,7 +4,8 @@ import { PokemonService } from "../../services/pokemon/pokemon.service";
 
 @Component({
     selector: 'app-pokemon-pagination',
-    templateUrl: './pokemon-pagination.component.html'
+    templateUrl: './pokemon-pagination.component.html',
+    styles: [`.center{ text-align: center }`]
 })
 
 export class PokemonPaginationComponent {
