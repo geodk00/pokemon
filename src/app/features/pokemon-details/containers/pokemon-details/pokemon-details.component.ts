@@ -5,7 +5,7 @@ import { Pokemon } from "src/app/models/pokemon.model";
 import { environment } from "src/environments/environment";
 import { PokemonDetailsService } from "../../services/pokemon-details.service";
 
-const { imageURL } = environment
+const { imageURL, pokeAPI } = environment
 
 @Component({
     selector: 'app-pokemon-details',
@@ -35,8 +35,9 @@ export class PokemonDetailsContainer implements OnInit{
         console.log('collecting pokemon')
         const collectedPokemon :Pokemon= {
             name: this.pokemonDetailsService.pokemon.name,
-            url: `${imageURL}/${ this.pokemonDetailsService.pokemon.id }.png`,
-            id: this.pokemonDetailsService.pokemon.id
+            image: `${imageURL}/${ this.pokemonDetailsService.pokemon.id }.png`,
+            id: this.pokemonDetailsService.pokemon.id,
+            url: `${pokeAPI}/${ this.pokemonDetailsService.pokemon.id }/`
         }
         this.localStorageService.addPokemon(collectedPokemon)
     }
