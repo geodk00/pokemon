@@ -6,14 +6,7 @@ import { LocalStorageService } from "../../services/local-storage/local-storage.
 @Component({
     selector: 'login-form',
     templateUrl: './login-form.component.html',
-    styles: [
-        `label, input {
-            display: block;
-            width: 100%;
-            margin-bottom: 1em;
-        }
-        `
-    ]
+    styleUrls: ['./login-form.component.css']
 })
 
 export class LoginFormComponent {
