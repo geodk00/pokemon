@@ -35,7 +35,7 @@ export class PokemonDetailsContainer implements OnInit{
         console.log('collecting pokemon')
         const collectedPokemon :Pokemon= {
             name: this.pokemonDetailsService.pokemon.name,
-            url: `${imageURL}//${ this.pokemonDetailsService.pokemon.id }.png`,
+            url: `${imageURL}/${ this.pokemonDetailsService.pokemon.id }.png`,
             id: this.pokemonDetailsService.pokemon.id
         }
         this.localStorageService.addPokemon(collectedPokemon)
