@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
+
+const TRAINER_KEY :string = 'trainer'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
-  private trainer: string = null;
-  private trainer$
+  private trainer$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
   public loading: boolean;
   public error: string = '';
 
   constructor() { 
     try {
-      this.trainer = localStorage.getItem('trainer');
-      this.trainer$ = new BehaviorSubject<string>(this.trainer)
+      let trainer = localStorage.getItem(TRAINER_KEY)
+      if (trainer) {
+        this.trainer$.next(window.atob(trainer))
+      }
     } catch (error) {
       console.log(error)
     }
@@ -25,16 +29,15 @@ export class LocalStorageService {
   }
 
   getTrainer() :string {
-    return this.trainer
+    return this.trainer$.getValue()
   }
 
   setTrainer(trainer: string) :void {
     this.loading = true;
 
     try {
-      this.trainer = trainer
-      localStorage.setItem('trainer', this.trainer)
-      this.trainer$.next(this.trainer)
+      localStorage.setItem(TRAINER_KEY, window.btoa(trainer))
+      this.trainer$.next(trainer)
     } catch (e) {
       //TODO: Improve this message
       this.error = e.message
