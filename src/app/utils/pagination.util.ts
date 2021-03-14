@@ -74,7 +74,7 @@ export class PaginationUtility {
 
         this.pagination = {
             ...this.pagination,
-            offsetEnd: this.pagination.itemCount - this.pagination.limit,
+            offsetEnd: this.pagination.itemCount,
             offsetStart: lastOffset,
             currentPage: this.calculateCurrentPage(lastOffset),
             isFirstPage: false,
@@ -85,7 +85,7 @@ export class PaginationUtility {
     first(): void {
         this.pagination = {
             ...this.pagination,
-            offsetEnd: this.pagination.offsetStart + this.pagination.limit,
+            offsetEnd: 0 + this.pagination.limit,
             offsetStart: 0,
             currentPage: 1,
             isFirstPage: true,
