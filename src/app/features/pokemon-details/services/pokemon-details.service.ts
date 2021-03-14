@@ -19,6 +19,9 @@ export class PokemonDetailsService {
     }
 
     public fetchPokemonByName(name: string): void {
+        // Set to null to prevent displaying the previous pokemon
+        // while fetching the new one
+        this.pokemon = null;
         this.http.get<Pokemon>(`${pokeAPI}/pokemon/${name}`)
             .pipe(
                 map((pokemon: Pokemon) => ({
