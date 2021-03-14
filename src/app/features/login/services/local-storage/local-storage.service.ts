@@ -60,10 +60,10 @@ export class LocalStorageService {
   }
 
   addPokemon(newPokemon: Pokemon) :void{
-    const currentPokemons = this.pokemon$.value
+    const newPokemons = [...this.pokemon$.value, newPokemon]
 
-    this.pokemon$.next([...currentPokemons, newPokemon])
-    localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(currentPokemons)))
+    this.pokemon$.next(newPokemons)
+    localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(newPokemons)))
   }
 
 }
