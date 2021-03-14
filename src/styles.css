@@ -6,11 +6,12 @@
 }
 
 :root {
-    --col-blue: #1C3144;
-    --col-red: #D00000;
-    --col-light-blue: #A2AEBB;
-    --col-green-blue: #3F88C5;
-    --col-yellow: #FFBA08;
+    --col-primary: #FFBA08;
+    --col-secondary: #D00000;
+    --col-tertiary: #9BC995;
+    --col-light: #B6CDC4;
+    --col-dark: #362C28;
+    
 
 }
 
