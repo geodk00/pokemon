@@ -1,12 +1,13 @@
 <nav>
     <ul>
-        <li>Pokemon Logo here</li>
-        <ng-container *ngIf="hasActiveSession">
         <li>
-            <a routerLink="/trainer">Trainer</a>
+            <img src="../../../../assets/logo.png" alt="pokemon logo">
         </li>
-        
-            <li>
+        <ng-container *ngIf="hasActiveSession">
+            <li class="navlink">
+                <a routerLink="/trainer">Trainer</a>
+            </li>
+            <li class="navlink">
                 <a routerLink="/pokemon">Pokemon</a>
             </li>
         </ng-container>

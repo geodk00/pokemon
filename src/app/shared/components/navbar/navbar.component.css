@@ -1,7 +1,8 @@
 nav {
     position: sticky;
     top: 0;
-    background-color: var(--col-yellow);
+    background-color: var(--col-primary);
+    border-bottom: 1px solid var(--col-dark);
 }
 
 nav, ul {
@@ -9,9 +10,25 @@ nav, ul {
     list-style-type: none;
 }
 
+.navlink:hover {
+
+    background-color: rgba(1,1,1,0.1);
+}
+
+.navlink:active {
+
+    background-color: rgba(1,1,1,0.2);
+}
+
 li a {
     text-decoration: none;
-    color: var(--col-red);
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var( --col-dark);
     display: block;
     padding: 1em;
+}
+
+li a:active {
+    transform: scale(0.95);
 }
