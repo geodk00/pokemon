@@ -12,7 +12,7 @@ import { PokemonService } from '../../services/pokemon/pokemon.service';
 @Component({
     selector: 'app-pokemon-pagination',
     templateUrl: './pokemon-pagination.component.html',
-    styles: [`.center{ text-align: center }`]
+    styles: [`.center{ text-align: center; }`, `p { display: inline; }`]
 })
 
 export class PokemonPaginationComponent {
@@ -28,6 +28,14 @@ export class PokemonPaginationComponent {
 
     get isLastPage(): boolean {
         return this.pokemonService.paginator && this.pokemonService.paginator.getPagination().isLastPage;
+    }
+
+    get totalPages(): number {
+        return this.pokemonService.paginator.getPagination().pages;
+    }
+
+    get currentPage(): number {
+        return this.pokemonService.paginator.getPagination().currentPage;
     }
 
     onPrevClick(): void {

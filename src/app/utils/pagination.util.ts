@@ -32,7 +32,7 @@ export class PaginationUtility {
             offsetEnd: this.pagination.offsetStart + limit,
             itemCount,
             limit,
-            pages: Math.floor(itemCount / limit)
+            pages: Math.ceil(itemCount / limit)
         };
     }
 
@@ -74,7 +74,7 @@ export class PaginationUtility {
     }
 
     last(): void {
-        const lastOffset =  this.pagination.pages * this.pagination.limit;
+        const lastOffset =  (this.pagination.pages - 1) * this.pagination.limit;
 
         this.pagination = {
             ...this.pagination,

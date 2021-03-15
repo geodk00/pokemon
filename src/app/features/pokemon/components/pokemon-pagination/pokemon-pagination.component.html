@@ -3,6 +3,7 @@
 <div class="center">
     <app-base-button [disabled]="isFirstPage" (click)="onFirstClick()">First Page</app-base-button>
     <app-base-button [disabled]="isFirstPage" (click)="onPrevClick()">Prev</app-base-button>
+    <p>{{ currentPage }} / {{ totalPages }}</p>
     <app-base-button [disabled]="isLastPage" (click)="onNextClick()">Next</app-base-button>
     <app-base-button [disabled]="isLastPage" (click)="onLastClick()">Last Page</app-base-button>
 </div>
