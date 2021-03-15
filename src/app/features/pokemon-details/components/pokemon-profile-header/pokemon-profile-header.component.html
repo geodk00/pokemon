@@ -1,6 +1,6 @@
 <header>
     <h2>{{ pokemon.name }}</h2>
     <img [src]="pokemon.image" [alt]="pokemon.name">
-    <app-base-button (onClick)="handleCollect()" *ngIf="!collectedPokemon">Collect</app-base-button>
-    <app-base-button (onClick)="handleRemove()" *ngIf="collectedPokemon">Remove</app-base-button>
+    <app-base-button (click)="handleCollect()" *ngIf="!collectedPokemon">Collect</app-base-button>
+    <app-base-button (click)="handleRemove()" *ngIf="collectedPokemon">Remove</app-base-button>
 </header>
