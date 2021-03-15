@@ -1,5 +1,9 @@
-import { Component, Input } from "@angular/core";
-import { Pokemon } from "src/app/models/pokemon.model";
+import { Component, Input } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
+
+/*
+ Component that display a list of pokemon moves
+*/
 
 @Component({
     selector: 'app-pokemon-moves',
@@ -8,5 +12,5 @@ import { Pokemon } from "src/app/models/pokemon.model";
 })
 
 export class PokemonMovesComponent {
-    @Input() pokemon :Pokemon;
+    @Input() pokemon: Pokemon;
 }

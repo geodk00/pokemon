@@ -2,24 +2,12 @@
     <label for="trainer-name">
         Please select a trainer name
     </label>
-    <input 
-        id="trainer-name"
-        name="trainer-name"
-        type="text"
-        formControlName="trainerName"
-        placeholder="trainer name"
-        required
-        minlength="3"
-        maxlength="20">
-   
-
+    <input id="trainer-name" name="trainer-name" type="text" formControlName="trainerName" placeholder="trainer name" required minlength="3" maxlength="20">
     <div class="center">
-    <app-base-button 
-        (onClick)="onLoginClick($event)"
-        [disabled] ="loginForm.invalid || loading">Go!</app-base-button>
+        <app-base-button (click)="onLoginClick($event)" [disabled]="loginForm.invalid || loading">Go!</app-base-button>
     </div>
-     <!-- If the name is invalid and there is input or the input has had focus and lost it -->
-     <div *ngIf="trainerName.invalid && (trainerName.dirty || trainerName.touched)">
+    <!-- If the name is invalid and there is input or the input has had focus and lost it -->
+    <div *ngIf="trainerName.invalid && (trainerName.dirty || trainerName.touched)">
         <p *ngIf="trainerName.errors.required">
             Trainer name is required
         </p>

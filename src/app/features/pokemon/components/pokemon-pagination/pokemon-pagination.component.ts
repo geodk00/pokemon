@@ -1,6 +1,13 @@
-import { Component, Input } from "@angular/core";
-import { Pokemon } from "src/app/models/pokemon.model";
-import { PokemonService } from "../../services/pokemon/pokemon.service";
+import { Component, Input } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
+import { PokemonService } from '../../services/pokemon/pokemon.service';
+
+/*
+    Component that wraps any component that
+    accepts an array and paginates it.
+
+    Uses the paginator utility in PokemonService
+*/
 
 @Component({
     selector: 'app-pokemon-pagination',
@@ -10,32 +17,32 @@ import { PokemonService } from "../../services/pokemon/pokemon.service";
 
 export class PokemonPaginationComponent {
     @Input() pokemon: Pokemon[] = [];
-    
+
     constructor(private readonly pokemonService: PokemonService) {
 
     }
 
     get isFirstPage(): boolean {
-        return this.pokemonService.paginator && this.pokemonService.paginator.getPagination().isFirstPage
+        return this.pokemonService.paginator && this.pokemonService.paginator.getPagination().isFirstPage;
     }
 
     get isLastPage(): boolean {
-        return this.pokemonService.paginator && this.pokemonService.paginator.getPagination().isLastPage
+        return this.pokemonService.paginator && this.pokemonService.paginator.getPagination().isLastPage;
     }
 
     onPrevClick(): void {
-        this.pokemonService.paginator.prev()
+        this.pokemonService.paginator.prev();
     }
 
     onNextClick(): void {
-        this.pokemonService.paginator.next()
+        this.pokemonService.paginator.next();
     }
 
     onFirstClick(): void {
-        this.pokemonService.paginator.first()
+        this.pokemonService.paginator.first();
     }
 
     onLastClick(): void {
-        this.pokemonService.paginator.last()
+        this.pokemonService.paginator.last();
     }
 }

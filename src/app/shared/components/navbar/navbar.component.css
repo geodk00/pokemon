@@ -5,19 +5,18 @@ nav {
     border-bottom: 1px solid var(--col-dark);
 }
 
-nav, ul {
+nav,
+ul {
     display: flex;
     list-style-type: none;
 }
 
 .navlink:hover {
-
-    background-color: rgba(1,1,1,0.1);
+    background-color: rgba(1, 1, 1, 0.1);
 }
 
 .navlink:active {
-
-    background-color: rgba(1,1,1,0.2);
+    background-color: rgba(1, 1, 1, 0.2);
 }
 
 li a {

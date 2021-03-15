@@ -1,5 +1,9 @@
-import { Component, Input } from "@angular/core";
-import { Pokemon } from "src/app/models/pokemon.model";
+import { Component, Input } from '@angular/core';
+import { Pokemon } from 'src/app/models/pokemon.model';
+
+/*
+    A grid that displays an array of pokemon
+*/
 
 @Component({
     selector: 'app-pokemon-grid',
@@ -8,5 +12,5 @@ import { Pokemon } from "src/app/models/pokemon.model";
 })
 
 export class PokemonGridComponent {
-    @Input() pokemon: Pokemon[] = []
+    @Input() pokemon: Pokemon[] = [];
 }

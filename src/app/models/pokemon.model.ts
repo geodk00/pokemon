@@ -14,11 +14,11 @@ export interface Pokemon {
 }
 
 export interface PokemonMove {
-    move?: {name?: string, url?: string}
+    move?: { name?: string, url?: string };
 }
 
 export interface PokemonAbility {
-    ability?: {name: string, url:string};
+    ability?: { name: string, url: string };
     is_hidden?: boolean;
     slot?: number;
 }
@@ -26,7 +26,7 @@ export interface PokemonAbility {
 export interface PokemonSprite {
     back_shiny: string;
     front_shiny: string;
-    other: PokemonSpriteOther
+    other: PokemonSpriteOther;
 }
 
 export interface PokemonSpriteOther {
@@ -51,7 +51,7 @@ export interface PokemonTypeValue {
 export interface PokemonStat {
     base_stat: number;
     effort: number;
-    stat: PokemonStatValue
+    stat: PokemonStatValue;
 }
 
 export interface PokemonStatValue {

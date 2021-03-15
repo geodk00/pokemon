@@ -1,8 +1,7 @@
 <app-container>
-<ul class="pokemon-grid">
-    <li *ngFor="let poke of pokemon" [routerLink]="['/pokemon',poke.name]">
-        <img [src]="poke.image" [alt]="poke.name" />
-        {{ poke.name }}
-    </li>
-</ul>
+    <ul class="pokemon-grid">
+        <li *ngFor="let poke of pokemon" [routerLink]="['/pokemon',poke.name]">
+            <img [src]="poke.image" [alt]="poke.name" /> {{ poke.name }}
+        </li>
+    </ul>
 </app-container>

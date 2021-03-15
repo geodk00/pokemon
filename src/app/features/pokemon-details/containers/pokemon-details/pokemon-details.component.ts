@@ -1,12 +1,18 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { Subscription } from "rxjs";
-import { LocalStorageService } from "src/app/features/login/services/local-storage/local-storage.service";
-import { Pokemon } from "src/app/models/pokemon.model";
-import { environment } from "src/environments/environment";
-import { PokemonDetailsService } from "../../services/pokemon-details.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { LocalStorageService } from 'src/app/features/login/services/local-storage/local-storage.service';
+import { Pokemon } from 'src/app/models/pokemon.model';
+import { environment } from 'src/environments/environment';
+import { PokemonDetailsService } from '../../services/pokemon-details.service';
 
-const { imageURL, pokeAPI } = environment
+const { imageURL, pokeAPI } = environment;
+
+/*
+    Component that displays a detailed view of a pokemon
+    and allow the trainer to collect the pokemon
+*/
+
 
 @Component({
     selector: 'app-pokemon-details',
@@ -14,14 +20,14 @@ const { imageURL, pokeAPI } = environment
     styleUrls: ['./pokemon-details.component.css']
 })
 
-export class PokemonDetailsContainer implements OnInit, OnDestroy{
+export class PokemonDetailsComponent implements OnInit, OnDestroy {
 
     private readonly pokemonName: string = '';
-    private pokemonSubscription :Subscription;
-    private pokemons$;
+    private pokemonSubscription: Subscription;
+    private pokemons: Pokemon[];
 
     constructor(
-        private readonly route: ActivatedRoute, 
+        private readonly route: ActivatedRoute,
         private readonly pokemonDetailsService: PokemonDetailsService,
         private readonly localStorageService: LocalStorageService) {
         this.pokemonName = this.route.snapshot.paramMap.get('name');
@@ -29,32 +35,36 @@ export class PokemonDetailsContainer implements OnInit, OnDestroy{
 
     ngOnInit(): void {
         this.pokemonDetailsService.fetchPokemonByName(this.pokemonName);
-        this.pokemonSubscription = this.localStorageService.getPokemonObservable().subscribe(pokemons => this.pokemons$ = pokemons)
+        // subscribe to the collected pokemons
+        this.pokemonSubscription = this.localStorageService.getPokemonObservable().subscribe(pokemons => this.pokemons = pokemons);
     }
 
     ngOnDestroy(): void {
-        this.pokemonSubscription.unsubscribe()
+        this.pokemonSubscription.unsubscribe();
     }
 
     get pokemon(): Pokemon {
         return this.pokemonDetailsService.pokemon;
     }
 
-    get collectedPokemon() :boolean {
-        return this.pokemon && this.pokemons$.filter(pokemon => pokemon.id === this.pokemon.id).length > 0
+    get collectedPokemon(): boolean {
+        // this.pokemon is not available immediately since it's fetched from the api
+        // We have collected this pokemon if the length of the array resulting from filtering on the id is > 0
+        return this.pokemon && this.pokemons.filter(pokemon => pokemon.id === this.pokemon.id).length > 0;
     }
 
-    handleCollect() {
-        const collectedPokemon :Pokemon= {
+    handleCollect(): void {
+        // Reconstrunct a Pokemon object from the detailed info we have in this view
+        const collectedPokemon: Pokemon = {
             name: this.pokemonDetailsService.pokemon.name,
-            image: `${imageURL}/${ this.pokemonDetailsService.pokemon.id }.png`,
+            image: `${imageURL}/${this.pokemonDetailsService.pokemon.id}.png`,
             id: this.pokemonDetailsService.pokemon.id,
-            url: `${pokeAPI}/${ this.pokemonDetailsService.pokemon.id }/`
-        }
-        this.localStorageService.addPokemon(collectedPokemon)
+            url: `${pokeAPI}/${this.pokemonDetailsService.pokemon.id}/`
+        };
+        this.localStorageService.addPokemon(collectedPokemon);
     }
 
-    handleRemove() {
-        this.localStorageService.removePokemon(this.pokemon.id)
+    handleRemove(): void {
+        this.localStorageService.removePokemon(this.pokemon.id);
     }
 }

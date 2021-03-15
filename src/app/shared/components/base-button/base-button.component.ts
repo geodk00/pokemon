@@ -1,4 +1,8 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+/*
+    A styled general purpose button
+*/
 
 @Component({
     selector: 'app-base-button',
@@ -8,11 +12,5 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 export class BaseButtonComponent {
 
-    @Input() disabled: boolean = false;
-    @Output() onClick: EventEmitter<any> = new EventEmitter();
-
-    onClickButton(event) {
-        console.log('click')
-        this.onClick.emit(event);
-    }
+    @Input() disabled = false;
 }

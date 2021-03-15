@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SessionGuard } from 'src/guards/session/session.guard';
-import { LoginContainer } from './features/login/containers/login/login.container';
-import { PokemonDetailsContainer } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
-import { PokemonContainer } from './features/pokemon/containers/pokemon/pokemon.component';
-import { TrainerContainer } from './features/trainer/containers/trainer/trainer.component';
+import { LoginComponent } from './features/login/containers/login/login.container';
+import { PokemonDetailsComponent } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
+import { PokemonComponent } from './features/pokemon/containers/pokemon/pokemon.component';
+import { TrainerComponent } from './features/trainer/containers/trainer/trainer.component';
 
 const routes: Routes = [
   {
@@ -14,23 +14,24 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginContainer
+    component: LoginComponent
   },
   {
     path: 'trainer',
-    component: TrainerContainer,
-    canActivate: [ SessionGuard ]
+    component: TrainerComponent,
+    canActivate: [SessionGuard]
   },
   {
     path: 'pokemon',
-    component: PokemonContainer,
-    canActivate: [ SessionGuard ]
+    component: PokemonComponent,
+    canActivate: [SessionGuard]
   },
   {
     path: 'pokemon/:name',
-    component: PokemonDetailsContainer,
-    canActivate: [ SessionGuard ]
-  },/*
+    component: PokemonDetailsComponent,
+    canActivate: [SessionGuard]
+  },
+  /*
   {
     path: '**',
     component: NotFoundView

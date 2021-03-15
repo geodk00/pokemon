@@ -3,13 +3,9 @@
         <h1>Loading</h1>
     </ng-container>
     <ng-container *ngIf="pokemon">
-            <app-pokemon-profile-header 
-                [pokemon]="pokemon" 
-                [collectedPokemon]="collectedPokemon" 
-                (collect)="handleCollect()"
-                (remove)="handleRemove()">
-            </app-pokemon-profile-header>
-            <app-pokemon-profile [pokemon]="pokemon"></app-pokemon-profile>
-            <app-pokemon-moves [pokemon]="pokemon"></app-pokemon-moves>
+        <app-pokemon-profile-header [pokemon]="pokemon" [collectedPokemon]="collectedPokemon" (collect)="handleCollect()" (remove)="handleRemove()">
+        </app-pokemon-profile-header>
+        <app-pokemon-profile [pokemon]="pokemon"></app-pokemon-profile>
+        <app-pokemon-moves [pokemon]="pokemon"></app-pokemon-moves>
     </ng-container>
 </app-container>

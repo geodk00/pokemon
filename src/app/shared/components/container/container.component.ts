@@ -1,4 +1,8 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
+
+/*
+    A centering general purpose container
+*/
 
 @Component({
     selector: 'app-container',

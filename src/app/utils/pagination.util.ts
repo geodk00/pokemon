@@ -1,3 +1,7 @@
+/*
+    A helper utility that keeps track of pagination of the results from a service
+*/
+
 export interface Pagination {
     pages: number;
     currentPage: number;
@@ -10,7 +14,7 @@ export interface Pagination {
 }
 
 export class PaginationUtility {
-    
+
     private pagination: Pagination = {
         pages: 0,
         limit: 0,
@@ -20,16 +24,16 @@ export class PaginationUtility {
         isLastPage: false,
         offsetEnd: 0,
         offsetStart: 0
-    }
+    };
 
-    constructor( itemCount :number = 0, limit :number = 16) {
+    constructor(itemCount: number = 0, limit: number = 16) {
         this.pagination = {
             ...this.pagination,
             offsetEnd: this.pagination.offsetStart + limit,
             itemCount,
             limit,
-            pages: Math.floor( itemCount / limit )
-        }
+            pages: Math.floor(itemCount / limit)
+        };
     }
 
     getPagination(): Pagination {
@@ -37,8 +41,8 @@ export class PaginationUtility {
     }
 
     next(): void {
-        const nextOffset = this.pagination.offsetStart + this.pagination.limit
-        if (nextOffset > this.pagination.itemCount -1) {
+        const nextOffset = this.pagination.offsetStart + this.pagination.limit;
+        if (nextOffset > this.pagination.itemCount - 1) {
             return;
         }
 
@@ -49,7 +53,7 @@ export class PaginationUtility {
             currentPage: this.calculateCurrentPage(nextOffset),
             isFirstPage: nextOffset === 0,
             isLastPage: nextOffset === this.pagination.itemCount - this.pagination.limit
-        }
+        };
     }
     prev(): void {
         if (this.pagination.offsetStart === 0) {
@@ -65,12 +69,12 @@ export class PaginationUtility {
             currentPage: this.calculateCurrentPage(nextOffset),
             isFirstPage: nextOffset === 0,
             isLastPage: nextOffset === this.pagination.itemCount - this.pagination.limit
-        }
+        };
 
     }
 
     last(): void {
-        const lastOffset = this.pagination.itemCount - this.pagination.limit
+        const lastOffset = this.pagination.itemCount - this.pagination.limit;
 
         this.pagination = {
             ...this.pagination,
@@ -79,7 +83,7 @@ export class PaginationUtility {
             currentPage: this.calculateCurrentPage(lastOffset),
             isFirstPage: false,
             isLastPage: true
-        }
+        };
     }
 
     first(): void {
@@ -90,10 +94,10 @@ export class PaginationUtility {
             currentPage: 1,
             isFirstPage: true,
             isLastPage: false
-        }
+        };
     }
 
     private calculateCurrentPage(offset: number): number {
-        return Math.ceil(  offset / this.pagination.limit ) + 1 
+        return Math.ceil(offset / this.pagination.limit) + 1;
     }
 }

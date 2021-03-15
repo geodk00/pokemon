@@ -4,25 +4,30 @@ import { Observable } from 'rxjs';
 import { AppRoutes } from 'src/app/enums/app-routes.enum';
 import { LocalStorageService } from 'src/app/features/login/services/local-storage/local-storage.service';
 
+/*
+  Use on routes that require the user
+  to be "logged in".
+
+  Will redirect to login if the user is not logged in
+*/
+
 @Injectable({
   providedIn: 'root'
 })
 export class SessionGuard implements CanActivate {
-  
-  constructor(private readonly router:Router, private readonly localStorageService: LocalStorageService) {
 
-  }
-  
+  constructor(private readonly router: Router, private readonly localStorageService: LocalStorageService) { }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
+
     if (this.localStorageService.getTrainer()) {
-      return true
+      return true;
     }
-    
-    this.router.navigateByUrl( AppRoutes.LOGIN );
+
+    this.router.navigateByUrl(AppRoutes.LOGIN);
     return false;
   }
-  
+
 }
