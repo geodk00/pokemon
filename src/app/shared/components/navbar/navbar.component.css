@@ -9,6 +9,16 @@ nav,
 ul {
     display: flex;
     list-style-type: none;
+    width: 100%;
+}
+
+ul li:last-child {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+ul li:only-child {
+    margin-left: 0;
 }
 
 .navlink:hover {

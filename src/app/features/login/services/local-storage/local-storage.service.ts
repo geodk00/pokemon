@@ -47,7 +47,6 @@ export class LocalStorageService {
   }
 
   // Save the trainer to localStorage
-  // Also set an empty collected pokemon array
   setTrainer(trainer: string): void {
     this.loading = true;
 
@@ -55,7 +54,6 @@ export class LocalStorageService {
       localStorage.setItem(TRAINER_KEY, window.btoa(trainer));
       this.setPokemon([]);
       this.trainer$.next(trainer);
-      this.pokemon$.next([]);
     } catch (e) {
       this.error = e.message;
     }
@@ -83,8 +81,17 @@ export class LocalStorageService {
     this.pokemon$.next(newPokemons);
   }
 
+  logout(): void {
+    window.localStorage.removeItem(TRAINER_KEY);
+    window.localStorage.removeItem(POKEMON_KEY);
+    this.pokemon$.next([]);
+    this.trainer$.next(null);
+  }
+
   // stringify and base64 encode the array
   private setPokemon(pokemon: Pokemon[]): void {
     localStorage.setItem(POKEMON_KEY, window.btoa(JSON.stringify(pokemon)));
   }
+
+
 }

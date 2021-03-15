@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'src/app/features/login/services/local-storage/local-storage.service';
-
+import { Router } from '@angular/router';
 /*
     The nav-bar at the top of the page
 */
@@ -13,7 +13,7 @@ import { LocalStorageService } from 'src/app/features/login/services/local-stora
 
 export class NavbarComponent {
 
-    constructor(private readonly localStorageService: LocalStorageService) {
+    constructor(private readonly localStorageService: LocalStorageService, private readonly router: Router) {
 
     }
 
@@ -21,4 +21,8 @@ export class NavbarComponent {
         return Boolean(this.localStorageService.getTrainer());
     }
 
+    logout(): void {
+        this.localStorageService.logout();
+        this.router.navigateByUrl('/')
+    }
 }
