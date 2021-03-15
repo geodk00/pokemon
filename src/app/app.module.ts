@@ -19,6 +19,7 @@ import { PokemonProfileHeaderComponent } from './features/pokemon-details/compon
 import { PokemonPaginationComponent } from './features/pokemon/components/pokemon-pagination/pokemon-pagination.component';
 import { PokemonProfileComponent } from './features/pokemon-details/components/pokemon-profile/pokemon-profile.component';
 import { PokemonMovesComponent } from './features/pokemon-details/components/pokemon-moves/pokemon-moves.component';
+import { NotFoundComponent } from './features/not-found/containers/not-found.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { PokemonMovesComponent } from './features/pokemon-details/components/pok
     PokemonComponent,
     PokemonDetailsComponent,
     TrainerComponent,
+    NotFoundComponent,
     // COMPONENTS
     NavbarComponent,
     LoginFormComponent,

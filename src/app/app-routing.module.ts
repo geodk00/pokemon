@@ -5,7 +5,7 @@ import { LoginComponent } from './features/login/containers/login/login.containe
 import { PokemonDetailsComponent } from './features/pokemon-details/containers/pokemon-details/pokemon-details.component';
 import { PokemonComponent } from './features/pokemon/containers/pokemon/pokemon.component';
 import { TrainerComponent } from './features/trainer/containers/trainer/trainer.component';
-
+import { NotFoundComponent } from './features/not-found/containers/not-found.component';
 const routes: Routes = [
   {
     path: '',
@@ -31,12 +31,10 @@ const routes: Routes = [
     component: PokemonDetailsComponent,
     canActivate: [SessionGuard]
   },
-  /*
   {
     path: '**',
-    component: NotFoundView
+    component: NotFoundComponent
   }
-  */
 ];
 
 @NgModule({
