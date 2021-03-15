@@ -1,4 +1,4 @@
-# Lost in Translation
+# Pokemon
 Angular app that displays pokemon fetched from pokeapi.co, display them to the user and let them "collect" the pokemon.
 
 ## Running
