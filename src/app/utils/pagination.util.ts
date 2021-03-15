@@ -52,7 +52,7 @@ export class PaginationUtility {
             offsetEnd: nextOffset + this.pagination.limit,
             currentPage: this.calculateCurrentPage(nextOffset),
             isFirstPage: nextOffset === 0,
-            isLastPage: nextOffset === this.pagination.itemCount - this.pagination.limit
+            isLastPage: nextOffset + this.pagination.limit > this.pagination.itemCount
         };
     }
     prev(): void {
@@ -74,7 +74,7 @@ export class PaginationUtility {
     }
 
     last(): void {
-        const lastOffset = this.pagination.itemCount - this.pagination.limit;
+        const lastOffset =  this.pagination.pages * this.pagination.limit;
 
         this.pagination = {
             ...this.pagination,
